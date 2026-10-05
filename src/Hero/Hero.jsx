@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import heroImage from "../Images/Hero.png";
+import heroImage from "../Images/hero.png";
 
 /**
  * HERO — Theme applied (Chocolate • Cream • Burnt Orange)
