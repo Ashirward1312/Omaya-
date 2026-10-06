@@ -11,11 +11,34 @@ function App() {
   return (
     <>
       <Header />
-      <Hero />
-      <Services />
-      <About />
-      <RentSale />
-      <Contact />
+
+      {/* Home / Hero */}
+      <div id="home">
+        <Hero />
+      </div>
+
+      
+      {/* About section */}
+      <div id="about">
+        <About />
+      </div>
+
+      {/* Suites section — Services is the suites/amenities content */}
+      <div id="suites">
+        <Services />
+      </div>
+
+
+      {/* Amenities anchor (points to suites area – smooth link) */}
+      <div id="amenities">
+        <RentSale />
+      </div>
+
+      {/* Contact section */}
+      <div id="contact">
+        <Contact />
+      </div>
+
       <Footer />
     </>
   )

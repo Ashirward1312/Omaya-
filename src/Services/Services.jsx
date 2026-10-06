@@ -326,7 +326,7 @@ export default function Services() {
       </section>
 
       {/* CTA (stronger contrast, more premium) */}
-      <section className="relative px-6 pb-20 lg:px-10 lg:pb-28" id="contact">
+      <section className="relative px-6 pb-20 lg:px-10 lg:pb-28">
         <div className="mx-auto max-w-7xl">
           <div className="relative overflow-hidden rounded-3xl border border-[#E07B39]/18 bg-gradient-to-br from-[#2B1B14] to-[#3A241C] p-9 text-center shadow-[0_48px_160px_-110px_rgba(0,0,0,0.95)] sm:p-12 lg:p-14">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(880px_420px_at_50%_0%,rgba(224,123,57,0.24),transparent_62%)]" />

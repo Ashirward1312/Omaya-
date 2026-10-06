@@ -320,7 +320,7 @@ export default function RentSale() {
             </section>
 
             {/* CTA */}
-            <section id="contact" className="px-6 pb-20 sm:px-10 lg:px-16 lg:pb-28">
+            <section className="px-6 pb-20 sm:px-10 lg:px-16 lg:pb-28">
                 <div className="mx-auto max-w-7xl">
                     <div className="relative overflow-hidden rounded-3xl border border-[#2B1B14]/10 bg-white/70 p-8 text-center shadow-[0_38px_120px_-98px_rgba(43,27,20,0.55)] backdrop-blur-md sm:p-12">
                         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(900px_420px_at_50%_10%,rgba(224,123,57,0.18),transparent_62%)]" />
