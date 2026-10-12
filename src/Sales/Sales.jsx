@@ -1,6 +1,6 @@
 // src/components/Highlights.jsx (Omaya Suites - Tailwind, Premium Theme)
 import imgExecutive from "../Images/executive.jpg";
-import imgDeluxe from "../Images/Deluxe.jpg";
+import imgDeluxe from "../Images/deluxe.jpg";
 import imgRoyal from "../Images/Royal.jpg";
 
 import {

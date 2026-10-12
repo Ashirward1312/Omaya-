@@ -1,5 +1,5 @@
 // src/components/About.jsx
-import img1 from "../Images/Luxury.jpg";
+import img1 from "../Images/luxury.jpg";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 
 const FEATURES = [
