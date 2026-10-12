@@ -1,381 +1,676 @@
-import React, { useEffect, useMemo, useState } from "react";
+// src/Services/Services.jsx  — OMAYA THEME (Beige/Gold — Light Background)
+import React, { useState } from "react";
 import {
-  Wifi,
-  ShieldCheck,
-  Car,
+  BedDouble,
+  Users,
+  Maximize2,
+  CheckCircle2,
+  ArrowUpRight,
+  Star,
+  Crown,
+  Building2,
   Sparkles,
-  Waves,
-  Headphones,
-  ArrowRight,
-  Check,
-  Bell,
-  X,
+  CreditCard,
 } from "lucide-react";
 
-/**
- * Premium Palette (Chocolate • Cream • Burnt Orange)
- * Chocolate:    #2B1B14 / #3A241C
- * Cream:        #FFF7EE / #F6EFE6 / #F1E3D2
- * Burnt Orange: #C65A1E / #E07B39
- */
-
-const services = [
+/* ─── Suite Data ─────────────────────────────────────────────────── */
+const SUITES = [
   {
-    icon: Wifi,
-    title: "High‑Speed Wi‑Fi",
-    tag: "Included",
-    description: "Reliable connection across the property for calls and streaming.",
-    points: ["Strong coverage", "Stable speeds", "Work‑ready"],
-    details:
-      "Enjoy stable, high‑speed Wi‑Fi throughout your suite and common areas—ideal for video calls, remote work, and uninterrupted entertainment.",
+    id: "royal",
+    badge: "Most Exclusive",
+    Icon: Crown,
+    label: "Royal Suite",
+    tagline: "Unmatched Privacy. Extraordinary Luxury.",
+    description:
+      "The Royal Suite is designed for guests who desire an extraordinary stay, blending elegance, privacy, and complete indulgence. Every corner elevates the sense of luxury — the private in-room swimming pool makes it perfect for VIP guests, romantic getaways, and high-profile corporate stays.",
+    size: "900 sq. ft.",
+    bed: "Luxury King-Size Bed",
+    occupancy: "2 Guests",
+    accentFrom: "#B58D56",
+    accentTo: "#8F613B",
+    isDark: true,
+    facilities: [
+      "Private In-Room Swimming Pool",
+      "Separate Dining Area",
+      "Private Balcony",
+      "Individual Climate-Control AC",
+      "LED TV",
+      "Tea / Coffee Maker",
+      "Safety Locker",
+      "Toiletry Kit",
+      "Hair Dryer",
+      "Dental & Shaving Kit",
+      "Cotton Slippers",
+      "Weighing Scale",
+      "Iron & Iron Board (on request)",
+      "Wake-Up Call Service",
+    ],
+    paid: [
+      "In-Room Dining",
+      "Laundry & Dry Cleaning",
+      "Photocopy / Printouts",
+      "Direct Dialing Facility",
+    ],
   },
   {
-    icon: Sparkles,
-    title: "Daily Housekeeping",
-    tag: "Daily",
-    description: "Freshened spaces and restocked essentials—kept consistently tidy.",
-    points: ["Fresh linens", "Clean bathrooms", "Essentials restock"],
-    details:
-      "Daily housekeeping keeps your suite crisp and comfortable, with refreshed linens and essentials—so you can focus on your stay, not chores.",
+    id: "deluxe",
+    badge: "Spa Experience",
+    Icon: Star,
+    label: "Deluxe Suite",
+    tagline: "Refined Comfort. Spa-Inspired Indulgence.",
+    description:
+      "The Deluxe Suite offers a warm and stylish setting, ideal for leisure travellers and corporate professionals who prefer comfort with elegance. The private in-room Jacuzzi adds a luxurious spa-like touch — perfect for rejuvenation after a long day.",
+    size: "800 sq. ft.",
+    bed: "Luxury King-Size Bed",
+    occupancy: "2 Guests",
+    accentFrom: "#C9A45C",
+    accentTo: "#8F613B",
+    isDark: true,
+    facilities: [
+      "Private In-Room Jacuzzi",
+      "Separate Dining Area",
+      "Individual Climate-Control AC",
+      "LED TV",
+      "Tea / Coffee Maker",
+      "Safety Locker",
+      "Toiletry Kit",
+      "Hair Dryer",
+      "Dental & Shaving Kit",
+      "Cotton Slippers",
+      "Weighing Scale",
+      "Wake-Up Call Service",
+      "Iron & Iron Board (on request)",
+    ],
+    paid: [
+      "In-Room Dining",
+      "Laundry & Dry Cleaning",
+      "Photocopy / Printouts",
+      "Direct Dialing Facility",
+    ],
   },
   {
-    icon: ShieldCheck,
-    title: "24/7 Security",
-    tag: "24/7",
-    description: "Controlled access and attentive oversight for a calm stay.",
-    points: ["Secure entry", "On‑site support", "Peace of mind"],
-    details:
-      "We maintain controlled access and active monitoring to support a safe, relaxed environment throughout your stay—day and night.",
-  },
-  {
-    icon: Car,
-    title: "Parking Support",
-    tag: "On Request",
-    description: "Assistance with smooth arrivals, parking guidance, and departures.",
-    points: ["Guided parking", "Easy access", "Quick assistance"],
-    details:
-      "Need parking help? Our team can guide you to suitable parking options and assist with smooth check‑in and check‑out logistics.",
-  },
-  {
-    icon: Waves,
-    title: "Premium Amenities",
-    tag: "Curated",
-    description: "Thoughtful essentials that make everyday living feel elevated.",
-    points: ["Quality toiletries", "Comfort bedding", "Well‑set suite"],
-    details:
-      "From comfort-first bedding to carefully chosen toiletries, our in‑suite amenities are selected to feel premium without being overdone.",
-  },
-  {
-    icon: Headphones,
-    title: "Guest Assistance",
-    tag: "Anytime",
-    description: "Responsive help for requests, guidance, and stay support.",
-    points: ["Fast responses", "Friendly support", "Local guidance"],
-    details:
-      "Have a question or a request? Our team is available to support you with quick, professional assistance throughout your stay.",
+    id: "executive",
+    badge: "Corporate Choice",
+    Icon: Building2,
+    label: "Executive Suite",
+    tagline: "Productivity Meets Premium Comfort.",
+    description:
+      "The Executive Suite is designed for corporate travellers, business professionals, and long-stay guests, offering the perfect balance of comfort and productivity. A smart layout, dedicated dining space, and private balcony create an environment ideal for focused work and restful evenings.",
+    size: "750 sq. ft.",
+    bed: "Luxury King-Size Bed",
+    occupancy: "2 Guests",
+    accentFrom: "#A87952",
+    accentTo: "#7A5535",
+    isDark: true,
+    facilities: [
+      "Separate Dining Area",
+      "Private Balcony",
+      "Individual Climate-Control AC",
+      "LED TV",
+      "Tea / Coffee Maker",
+      "Safety Locker",
+      "Toiletry Kit",
+      "Hair Dryer",
+      "Dental & Shaving Kit",
+      "Cotton Slippers",
+      "Weighing Scale",
+      "Iron & Iron Board (on request)",
+      "Wake-Up Call Service",
+    ],
+    paid: [
+      "In-Room Dining",
+      "Laundry Services",
+      "Photocopy / Printouts",
+      "Direct Dialing Facility",
+    ],
   },
 ];
 
-function PrimaryButton({ href, children }) {
-  return (
-    <a
-      href={href}
-      className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#C65A1E] to-[#E07B39] px-8 py-4 text-xs font-semibold uppercase tracking-[0.22em] text-[#FFF7EE] shadow-[0_22px_60px_-38px_rgba(43,27,20,0.95)] transition hover:brightness-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E07B39]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F6EFE6]"
-    >
-      {children}
-      <ArrowRight
-        size={16}
-        className="transition-transform duration-300 group-hover:translate-x-0.5"
-      />
-    </a>
-  );
-}
+/* ─── Suite Card ─────────────────────────────────────────────────── */
+function SuiteCard({ suite }) {
+  const {
+    Icon, label, badge, tagline, description,
+    size, bed, occupancy, accentFrom, accentTo,
+    isDark, facilities, paid,
+  } = suite;
 
-function SecondaryButton({ href, children }) {
-  return (
-    <a
-      href={href}
-      className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[#2B1B14]/16 bg-white/55 px-8 py-4 text-xs font-semibold uppercase tracking-[0.22em] text-[#3A241C] backdrop-blur-md transition hover:bg-white/75 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C65A1E]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F6EFE6]"
-    >
-      {children}
-      <ArrowRight size={16} className="opacity-80" />
-    </a>
-  );
-}
-
-function ServiceModal({ open, onClose, service }) {
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e) => {
-      if (e.key === "Escape") onClose?.();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open, onClose]);
-
-  if (!open || !service) return null;
-
-  const Icon = service.icon;
+  // Color tokens
+  const leftBg = isDark ? "#111A24" : "#ffffff";
+  const rightBg = isDark ? "#1C2A3A" : "#FAFAF7";
+  const nameCl = isDark ? "#ffffff" : "#111A24";
+  const taglineCl = isDark ? "rgba(255,255,255,0.42)" : "#888";
+  const descCl = isDark ? "rgba(255,255,255,0.58)" : "#555";
+  const lblCl = isDark ? "rgba(255,255,255,0.38)" : "#aaa";
+  const valCl = isDark ? "#ffffff" : "#111A24";
+  const pillBg = isDark ? "rgba(255,255,255,0.05)" : "#ffffff";
+  const pillBdr = isDark ? "rgba(255,255,255,0.10)" : `${accentFrom}35`;
+  const pillTxt = isDark ? "rgba(255,255,255,0.84)" : "#2d2d2d";
+  const paidBg = isDark ? "rgba(255,255,255,0.06)" : "#f0ece2";
+  const paidBdr = isDark ? "rgba(255,255,255,0.09)" : "#e0d5c0";
+  const paidTxt = isDark ? "rgba(255,255,255,0.62)" : "#5a4a35";
+  const paidHdCl = isDark ? "rgba(255,255,255,0.38)" : "#a0876a";
+  const panelBdr = isDark ? "rgba(255,255,255,0.08)" : "#e8e2d6";
+  const cardBdr = isDark ? "rgba(255,255,255,0.09)" : `${accentFrom}28`;
 
   return (
-    <div className="fixed inset-0 z-50">
-      <div
-        className="absolute inset-0 bg-[#2B1B14]/55 backdrop-blur-sm"
-        onClick={onClose}
-      />
-      <div className="absolute left-1/2 top-1/2 w-[92%] max-w-2xl -translate-x-1/2 -translate-y-1/2">
-        <div className="relative overflow-hidden rounded-3xl border border-[#E07B39]/20 bg-gradient-to-b from-[#FFF7EE] to-[#F1E3D2] shadow-[0_42px_140px_-85px_rgba(0,0,0,0.9)]">
-          <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#E07B39]/18 blur-3xl" />
-          <div className="pointer-events-none absolute -left-28 -bottom-28 h-80 w-80 rounded-full bg-[#2B1B14]/10 blur-3xl" />
+    <div className="sc-wrap">
+      <div className="sc-card" style={{ borderColor: cardBdr }}>
 
-          <div className="relative p-7 sm:p-9">
-            <div className="flex items-start justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[#E07B39]/24 bg-white/60 text-[#C65A1E] shadow-sm">
-                  <Icon size={22} strokeWidth={1.7} />
-                </div>
+        {/* ── Left panel ── */}
+        <div
+          className="sc-left"
+          style={{
+            background: leftBg,
+            borderRightColor: isDark ? "rgba(255,255,255,0.06)" : `${accentFrom}20`,
+          }}
+        >
+          {/* Identity */}
+          <div className="sc-identity">
+            <div
+              className="sc-icon"
+              style={{ borderColor: `${accentFrom}55`, background: `${accentFrom}18` }}
+            >
+              <Icon size={24} strokeWidth={1.6} style={{ color: accentFrom }} />
+            </div>
+            <div>
+              <span
+                className="sc-badge"
+                style={{ color: accentFrom, borderColor: `${accentFrom}48`, background: `${accentFrom}14` }}
+              >
+                {badge}
+              </span>
+              <h3 className="sc-name" style={{ color: nameCl }}>{label}</h3>
+              <p className="sc-tagline" style={{ color: taglineCl }}>{tagline}</p>
+            </div>
+          </div>
+
+          {/* Accent divider */}
+          <div
+            className="sc-divider"
+            style={{ background: `linear-gradient(90deg, ${accentFrom}70, transparent)` }}
+          />
+
+          {/* Stats */}
+          <div className="sc-stats">
+            {[
+              { Icon: Maximize2, label: "Room Size", value: size },
+              { Icon: BedDouble, label: "Bed Type", value: bed },
+              { Icon: Users, label: "Occupancy", value: occupancy },
+            ].map(({ Icon: StatIcon, label: sl, value }) => (
+              <div key={sl} className="sc-stat">
+                <StatIcon size={13} strokeWidth={1.8} style={{ color: accentFrom }} />
                 <div>
-                  <div className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#C65A1E]">
-                    {service.tag}
-                  </div>
-                  <h3 className="mt-1 text-xl font-semibold tracking-tight text-[#2B1B14]">
-                    {service.title}
-                  </h3>
+                  <div className="sc-stat-lbl" style={{ color: lblCl }}>{sl}</div>
+                  <div className="sc-stat-val" style={{ color: valCl }}>{value}</div>
                 </div>
               </div>
+            ))}
+          </div>
 
-              <button
-                onClick={onClose}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-[#2B1B14]/12 bg-white/55 text-[#3A241C] transition hover:bg-white/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E07B39]/45"
-                aria-label="Close"
-              >
-                <X size={18} />
-              </button>
+          {/* Divider */}
+          <div
+            className="sc-divider"
+            style={{ background: `linear-gradient(90deg, ${accentFrom}70, transparent)` }}
+          />
+
+          {/* Description */}
+          <p className="sc-desc" style={{ color: descCl }}>{description}</p>
+
+          {/* CTA */}
+          <a
+            href="#contact"
+            className="sc-cta"
+            style={{ background: `linear-gradient(135deg, ${accentFrom}, ${accentTo})` }}
+          >
+            Book This Suite <ArrowUpRight size={14} />
+          </a>
+        </div>
+
+        {/* ── Right panel ── */}
+        <div className="sc-right" style={{ background: rightBg }}>
+
+          {/* Facilities */}
+          <div className="sc-panel-block">
+            <div className="sc-panel-hd">
+              <Sparkles size={13} strokeWidth={2} style={{ color: accentFrom }} />
+              <span style={{ color: accentFrom }}>Room Facilities</span>
             </div>
-
-            <p className="mt-4 text-sm leading-7 text-[#5E4E43]">
-              {service.details}
-            </p>
-
-            <div className="mt-5 grid gap-2 sm:grid-cols-2">
-              {service.points.map((p) => (
+            <div className="sc-pills-grid">
+              {facilities.map((f) => (
                 <div
-                  key={p}
-                  className="flex items-center gap-2 rounded-2xl border border-[#2B1B14]/10 bg-white/55 px-4 py-3 text-sm text-[#5E4E43]"
+                  key={f}
+                  className="sc-pill"
+                  style={{ background: pillBg, borderColor: pillBdr }}
                 >
-                  <span className="grid h-7 w-7 place-items-center rounded-full border border-[#E07B39]/18 bg-white/70">
-                    <Check size={14} className="text-[#C65A1E]" />
-                  </span>
-                  <span className="font-medium">{p}</span>
+                  <CheckCircle2 size={12} strokeWidth={2.2} style={{ color: accentFrom, flexShrink: 0 }} />
+                  <span style={{ color: pillTxt }}>{f}</span>
                 </div>
               ))}
             </div>
+          </div>
 
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-end">
-              <SecondaryButton href="tel:+910000000000">Call</SecondaryButton>
-              <PrimaryButton href="/#book">Book now</PrimaryButton>
+          {/* Paid Services */}
+          <div className="sc-panel-block sc-panel-block--paid" style={{ borderTopColor: panelBdr }}>
+            <div className="sc-panel-hd">
+              <CreditCard size={13} strokeWidth={2} style={{ color: paidHdCl }} />
+              <span style={{ color: paidHdCl }}>Paid Services</span>
+            </div>
+            <div className="sc-paid-row">
+              {paid.map((p) => (
+                <div
+                  key={p}
+                  className="sc-paid-item"
+                  style={{ background: paidBg, borderColor: paidBdr, color: paidTxt }}
+                >
+                  <span className="sc-paid-dot" style={{ background: accentFrom }} />
+                  {p}
+                </div>
+              ))}
             </div>
           </div>
+
         </div>
       </div>
     </div>
   );
 }
 
-function ServiceCard({ service, index, onLearnMore }) {
-  const Icon = service.icon;
+/* ─── Main Component ─────────────────────────────────────────────── */
+export default function Services() {
+  const [activeId, setActiveId] = useState("royal");
 
   return (
-    <article className="group relative">
-      {/* richer border + glow */}
-      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#E07B39]/26 via-white/40 to-transparent opacity-90" />
-      <div className="relative rounded-3xl bg-gradient-to-b from-white/70 to-white/35 p-px">
-        <div className="relative overflow-hidden rounded-3xl border border-[#2B1B14]/10 bg-gradient-to-b from-[#FFF7EE]/86 to-[#F1E3D2]/86 p-7 shadow-[0_30px_95px_-72px_rgba(43,27,20,0.92)] transition-all duration-500 group-hover:-translate-y-1 group-hover:border-[#E07B39]/26 group-hover:shadow-[0_42px_130px_-88px_rgba(43,27,20,0.98)]">
-          <div className="pointer-events-none absolute -right-28 -top-28 h-72 w-72 rounded-full bg-[#E07B39]/14 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-          <div className="pointer-events-none absolute -left-36 -bottom-36 h-80 w-80 rounded-full bg-[#2B1B14]/10 blur-3xl opacity-80" />
+    <section id="services" className="svc-root">
 
-          <div className="relative flex items-start justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <div className="relative">
-                <div className="absolute inset-0 rounded-2xl bg-[#E07B39]/14 blur-xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                <div className="relative grid h-12 w-12 place-items-center rounded-2xl border border-[#E07B39]/22 bg-gradient-to-br from-[#FFF7EE] to-[#F1E3D2] text-[#C65A1E] shadow-sm transition-all duration-500 group-hover:border-[#E07B39]/42 group-hover:shadow-md">
-                  <Icon size={22} strokeWidth={1.7} />
-                </div>
-              </div>
+      <div className="svc-inner">
 
-              <span className="inline-flex items-center rounded-full border border-[#E07B39]/18 bg-[#E07B39]/10 px-3 py-1 text-[11px] font-semibold tracking-wide text-[#3A241C]">
-                {service.tag}
-              </span>
-            </div>
-
-            <div className="text-[11px] font-semibold tracking-[0.32em] text-[#C65A1E]">
-              {(index + 1).toString().padStart(2, "0")}
-            </div>
+        {/* ── Heading ── */}
+        <div className="svc-top">
+          <div className="svc-eyebrow">
+            <span className="svc-ey-line" />
+            <span className="svc-ey-text">Suites &amp; Amenities</span>
+            <span className="svc-ey-line" />
           </div>
 
-          <div className="relative mt-4">
-            <h3 className="text-lg font-semibold tracking-tight text-[#2B1B14] transition-colors duration-300 group-hover:text-[#3A241C]">
-              {service.title}
-            </h3>
-            <p className="mt-2 text-sm leading-6 text-[#6B5A4E]">
-              {service.description}
-            </p>
-          </div>
+          <h2 className="svc-h2">Three Distinct Suites</h2>
+          <h2 className="svc-h2 svc-h2--gold">One Standard of Excellence</h2>
 
-          <ul className="relative mt-5 space-y-2">
-            {service.points.map((p) => (
-              <li key={p} className="flex items-center gap-2 text-sm text-[#5E4E43]">
-                <span className="grid h-6 w-6 place-items-center rounded-full border border-[#E07B39]/18 bg-white/60">
-                  <Check size={14} className="text-[#C65A1E]" />
-                </span>
-                <span>{p}</span>
-              </li>
-            ))}
-          </ul>
+          <p className="svc-subtitle">
+            Each suite at Omaya is thoughtfully crafted for a unique guest experience —
+            from the grandeur of the Royal Suite to the productivity-first Executive Suite.
+          </p>
+        </div>
 
-          {/* Better Learn More CTA */}
-          <div className="relative mt-6 flex items-center justify-between">
-            <div className="h-px w-14 bg-gradient-to-r from-[#E07B39]/65 to-transparent transition-all duration-500 group-hover:w-20" />
+        {/* ── Tab Switcher ── */}
+        <div className="svc-tabs" role="tablist">
+          {SUITES.map((s) => {
+            const active = s.id === activeId;
+            return (
+              <button
+                key={s.id}
+                role="tab"
+                aria-selected={active}
+                onClick={() => setActiveId(s.id)}
+                className={`svc-tab ${active ? "svc-tab--on" : ""}`}
+                style={
+                  active
+                    ? {
+                      background: `linear-gradient(135deg, ${s.accentFrom}, ${s.accentTo})`,
+                      borderColor: s.accentFrom,
+                      color: "#fff",
+                      boxShadow: `0 4px 18px ${s.accentFrom}55`,
+                    }
+                    : {}
+                }
+              >
+                <s.Icon size={15} strokeWidth={1.8} />
+                {s.label}
+              </button>
+            );
+          })}
+        </div>
 
-            <button
-              type="button"
-              onClick={() => onLearnMore(service)}
-              className="inline-flex items-center gap-2 rounded-xl border border-[#2B1B14]/10 bg-white/55 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-[#3A241C] backdrop-blur-md transition hover:bg-white/80 hover:border-[#E07B39]/22 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E07B39]/45"
-            >
-              Learn more <ArrowRight size={14} />
-            </button>
+        {/* ── Suite Card ── */}
+        {SUITES.map((s) =>
+          s.id === activeId ? <SuiteCard key={s.id} suite={s} /> : null
+        )}
+
+        {/* ── Suite Mix Strip ── */}
+        <div className="svc-mix">
+          <span className="svc-mix-lbl">Total 23 Keys</span>
+          <div className="svc-mix-pills">
+            <span className="svc-mp svc-mp--r">👑 Royal — 4 Suites</span>
+            <span className="svc-mp svc-mp--d">⭐ Deluxe — 3 Suites</span>
+            <span className="svc-mp svc-mp--e">🏢 Executive — 16 Suites</span>
           </div>
         </div>
+
       </div>
-    </article>
-  );
+
+      {/* ── Styles ── */}
+      <style>{`
+
+        /* ─── Root — LIGHT background ─── */
+       
+.svc-root {
+  background: #F4F1E9;
+  padding: 120px 0 96px;
 }
 
-export default function Services() {
-  const [active, setActive] = useState(null);
+        .svc-inner {
+          max-width: 1120px;
+          margin: 0 auto;
+          padding: 0 24px;
+        }
 
-  const headline = useMemo(
-    () => ({
-      eyebrow: "Omaya Suites",
-      title: "Suite services, done right.",
-      subtitle:
-        "Professional essentials with a warm, premium finish—so your stay feels seamless.",
-    }),
-    []
-  );
+        /* ─── Heading ─── */
+        .svc-top { text-align: center; margin-bottom: 48px; }
 
-  return (
-    <main className="min-h-screen text-[#2B1B14]">
-      {/* Background with more depth (less empty look) */}
-      <div className="fixed inset-0 -z-10 bg-[radial-gradient(900px_520px_at_50%_0%,rgba(224,123,57,0.16),transparent_62%),linear-gradient(to_bottom,#FFF7EE,#F6EFE6,#F1E3D2)]" />
-      <div className="fixed inset-0 -z-10 opacity-[0.06] mix-blend-multiply [background-image:radial-gradient(#2B1B14_1px,transparent_1px)] [background-size:18px_18px]" />
+        .svc-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 14px;
+          margin-bottom: 20px;
+        }
+        .svc-ey-line {
+          display: block;
+          width: 44px; height: 1px;
+          background: #A87952;
+        }
+        .svc-ey-text {
+          font-size: 10px;
+          font-weight: 800;
+          letter-spacing: 0.22em;
+          text-transform: uppercase;
+          color: #A87952;
+        }
+        .svc-h2 {
+          font-size: clamp(26px, 4vw, 42px);
+          font-weight: 800;
+          line-height: 1.18;
+          letter-spacing: -0.022em;
+          color: #111A24;
+          margin: 0;
+        }
+        .svc-h2--gold {
+          background: linear-gradient(135deg, #C9A45C, #8F613B);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin-top: 4px;
+        }
+        .svc-subtitle {
+          max-width: 580px;
+          margin: 18px auto 0;
+          font-size: 15px;
+          line-height: 1.8;
+          color: #6a6055;
+        }
 
-      {/* HERO (tighter, stronger) */}
-      <section className="relative px-6 pt-16 pb-10 lg:px-10 lg:pt-20">
-        <div className="mx-auto max-w-7xl">
-          <div className="mx-auto max-w-3xl text-center">
-            <div className="inline-flex items-center gap-3 rounded-full border border-[#2B1B14]/10 bg-white/55 px-4 py-2 backdrop-blur-md">
-              <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#E07B39]/12">
-                <Bell size={16} className="text-[#C65A1E]" />
-              </span>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.34em] text-[#3A241C]">
-                {headline.eyebrow} — Amenities
-              </p>
-            </div>
+        /* ─── Tabs ─── */
+        .svc-tabs {
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          flex-wrap: wrap;
+          margin-bottom: 32px;
+        }
+        .svc-tab {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 24px;
+          border-radius: 50px;
+          border: 1.5px solid #d4c4a8;
+          background: #fff;
+          color: #7a6a55;
+          font-size: 13px;
+          font-weight: 700;
+          letter-spacing: 0.04em;
+          cursor: pointer;
+          transition: all 0.28s ease;
+        }
+        .svc-tab:hover:not(.svc-tab--on) {
+          border-color: #A87952;
+          color: #A87952;
+          background: #fdf8f2;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 16px rgba(168,121,82,0.14);
+        }
+        .svc-tab--on {
+          transform: translateY(-2px);
+        }
 
-            <h1 className="mt-5 text-4xl font-light leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-              {headline.title.split(" ").slice(0, 2).join(" ")}{" "}
-              <span className="bg-gradient-to-r from-[#C65A1E] to-[#E07B39] bg-clip-text text-transparent">
-                {headline.title.split(" ").slice(2).join(" ")}
-              </span>
-            </h1>
+        /* ─── Card ─── */
+        .sc-wrap {
+          animation: scFadeUp 0.38s cubic-bezier(0.22,1,0.36,1) both;
+        }
+        @keyframes scFadeUp {
+          from { opacity: 0; transform: translateY(18px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
 
-            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-[#6B5A4E] sm:text-base">
-              {headline.subtitle}
-            </p>
+        .sc-card {
+          display: grid;
+          grid-template-columns: 340px 1fr;
+          border-radius: 22px;
+          overflow: hidden;
+          border: 1px solid;
+          box-shadow: 0 8px 48px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.05);
+        }
+        @media (max-width: 860px) {
+          .sc-card { grid-template-columns: 1fr; }
+        }
 
-            <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <PrimaryButton href="/#book">Check availability</PrimaryButton>
-              <SecondaryButton href="#services">View Amenities</SecondaryButton>
-            </div>
-          </div>
-        </div>
-      </section>
+        /* ─── Left Panel ─── */
+        .sc-left {
+          padding: 34px 30px;
+          display: flex;
+          flex-direction: column;
+          border-right: 1px solid;
+        }
+        @media (max-width: 860px) {
+          .sc-left { border-right: none; border-bottom: 1px solid #e8e2d6; }
+        }
 
-      {/* SERVICES */}
-      <section className="relative px-6 pb-14 lg:px-10 lg:pb-20" id="services">
-        <div className="mx-auto max-w-7xl">
-          <div className="mx-auto mb-7 flex max-w-6xl flex-col items-center justify-between gap-4 text-center sm:mb-10">
-            <h2 className="text-2xl font-light tracking-tight sm:text-3xl lg:text-4xl">
-              Included with every stay.
-            </h2>
-            <div className="h-px w-40 bg-gradient-to-r from-transparent via-[#E07B39]/45 to-transparent" />
-          </div>
+        .sc-identity {
+          display: flex;
+          align-items: flex-start;
+          gap: 15px;
+          margin-bottom: 22px;
+        }
+        .sc-icon {
+          width: 52px; height: 52px;
+          border-radius: 14px;
+          border: 1.5px solid;
+          display: grid;
+          place-items: center;
+          flex-shrink: 0;
+        }
+        .sc-badge {
+          display: inline-block;
+          font-size: 9px;
+          font-weight: 800;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          padding: 3px 11px;
+          border-radius: 50px;
+          border: 1px solid;
+          margin-bottom: 7px;
+        }
+        .sc-name {
+          font-size: clamp(20px, 2.6vw, 25px);
+          font-weight: 800;
+          letter-spacing: -0.02em;
+          margin: 0 0 4px;
+          line-height: 1.2;
+        }
+        .sc-tagline {
+          font-size: 13px;
+          margin: 0;
+          font-style: italic;
+        }
 
-          <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((s, i) => (
-              <ServiceCard
-                key={s.title}
-                service={s}
-                index={i}
-                onLearnMore={setActive}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+        .sc-divider {
+          height: 1px;
+          border-radius: 1px;
+          margin: 18px 0;
+        }
 
-      {/* CTA (stronger contrast, more premium) */}
-      <section className="relative px-6 pb-20 lg:px-10 lg:pb-28">
-        <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-3xl border border-[#E07B39]/18 bg-gradient-to-br from-[#2B1B14] to-[#3A241C] p-9 text-center shadow-[0_48px_160px_-110px_rgba(0,0,0,0.95)] sm:p-12 lg:p-14">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(880px_420px_at_50%_0%,rgba(224,123,57,0.24),transparent_62%)]" />
-            <div className="pointer-events-none absolute -right-28 -top-28 h-80 w-80 rounded-full bg-[#E07B39]/14 blur-3xl" />
+        .sc-stats {
+          display: flex;
+          flex-direction: column;
+          gap: 13px;
+        }
+        .sc-stat {
+          display: flex;
+          align-items: center;
+          gap: 11px;
+        }
+        .sc-stat-lbl {
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          margin-bottom: 2px;
+        }
+        .sc-stat-val {
+          font-size: 13px;
+          font-weight: 700;
+        }
 
-            <div className="relative mx-auto max-w-3xl">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.34em] text-[#F1E3D2]/80">
-                Quick confirmation • Professional support
-              </p>
+        .sc-desc {
+          font-size: 13.5px;
+          line-height: 1.85;
+          margin: 0;
+        }
 
-              <h3 className="mt-3 text-3xl font-light leading-tight tracking-tight text-[#FFF7EE] sm:text-4xl">
-                Ready to reserve your suite?
-              </h3>
+        .sc-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          margin-top: 26px;
+          padding: 11px 24px;
+          border-radius: 11px;
+          color: #fff;
+          font-size: 11px;
+          font-weight: 800;
+          letter-spacing: 0.13em;
+          text-transform: uppercase;
+          text-decoration: none;
+          align-self: flex-start;
+          box-shadow: 0 5px 20px rgba(0,0,0,0.22);
+          transition: opacity 0.2s, transform 0.2s;
+        }
+        .sc-cta:hover {
+          opacity: 0.88;
+          transform: translateY(-2px);
+        }
 
-              <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-[#F1E3D2]/80 sm:text-base">
-                Share your dates and preferences—we’ll help you finalize the right
-                option quickly.
-              </p>
+        /* ─── Right Panel ─── */
+        .sc-right {
+          padding: 34px 30px;
+          display: flex;
+          flex-direction: column;
+        }
+        @media (max-width: 860px) {
+          .sc-right { padding: 28px 24px; }
+          .sc-left  { padding: 28px 24px; }
+        }
 
-              <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <a
-                  href="/#book"
-                  className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#C65A1E] to-[#E07B39] px-9 py-4 text-xs font-semibold uppercase tracking-[0.22em] text-[#FFF7EE] shadow-[0_24px_70px_-45px_rgba(0,0,0,0.65)] transition hover:brightness-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E07B39]/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#2B1B14]"
-                >
-                  Book now
-                  <ArrowRight
-                    size={16}
-                    className="transition-transform duration-300 group-hover:translate-x-0.5"
-                  />
-                </a>
+        .sc-panel-block { flex: 1; }
+        .sc-panel-block--paid {
+          margin-top: 26px;
+          padding-top: 22px;
+          border-top: 1px solid;
+        }
 
-                <a
-                  href="tel:+910000000000"
-                  className="inline-flex items-center justify-center rounded-2xl border border-[#FFF7EE]/18 bg-white/10 px-9 py-4 text-xs font-semibold uppercase tracking-[0.22em] text-[#FFF7EE] backdrop-blur-md transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E07B39]/45 focus-visible:ring-offset-2 focus-visible:ring-offset-[#2B1B14]"
-                >
-                  Call +91 00000 00000
-                </a>
-              </div>
+        .sc-panel-hd {
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          font-size: 10px;
+          font-weight: 800;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          margin-bottom: 16px;
+        }
 
-              <p className="mt-4 text-xs text-[#F1E3D2]/70">
-                Response time may vary outside business hours.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+        /* Facility Pills */
+        .sc-pills-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 8px;
+        }
+        @media (max-width: 540px) {
+          .sc-pills-grid { grid-template-columns: 1fr; }
+        }
+        .sc-pill {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 12px;
+          border-radius: 9px;
+          border: 1px solid;
+          font-size: 12.5px;
+          font-weight: 500;
+          transition: opacity 0.15s;
+        }
+        .sc-pill:hover { opacity: 0.8; }
 
-      {/* Learn more modal */}
-      <ServiceModal open={!!active} onClose={() => setActive(null)} service={active} />
-    </main>
+        /* Paid */
+        .sc-paid-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 9px;
+        }
+        .sc-paid-item {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          padding: 7px 13px;
+          border-radius: 50px;
+          border: 1px solid;
+          font-size: 12.5px;
+          font-weight: 600;
+        }
+        .sc-paid-dot {
+          width: 6px; height: 6px;
+          border-radius: 50%;
+          flex-shrink: 0;
+        }
+
+        /* ─── Suite Mix Strip ─── */
+        .svc-mix {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-top: 24px;
+          padding: 15px 26px;
+          border-radius: 14px;
+          background: #111A24;
+        }
+        .svc-mix-lbl {
+          font-size: 10px;
+          font-weight: 800;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: rgba(255,255,255,0.32);
+        }
+        .svc-mix-pills { display: flex; gap: 9px; flex-wrap: wrap; }
+        .svc-mp {
+          padding: 5px 14px;
+          border-radius: 50px;
+          font-size: 12px;
+          font-weight: 700;
+        }
+        .svc-mp--r { background: rgba(201,164,92,0.14); color: #C9A45C; border: 1px solid rgba(201,164,92,0.28); }
+        .svc-mp--d { background: rgba(185,142,86,0.14); color: #C9A45C; border: 1px solid rgba(185,142,86,0.28); }
+        .svc-mp--e { background: rgba(168,121,82,0.14); color: #C9A45C; border: 1px solid rgba(168,121,82,0.28); }
+
+      `}</style>
+    </section>
   );
 }

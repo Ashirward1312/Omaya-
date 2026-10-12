@@ -1,62 +1,69 @@
-import {
-  ArrowRight,
-  Mail,
-  Phone,
-  MapPin,
-} from "lucide-react";
+// src/components/Footer.jsx (OMAYA — Dark + Gold | Simple + Compact | Logo + Explore 2-Column)
+import { ArrowRight, Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import { Link } from "react-router-dom";
+import Logo from "../Images/Omaya_Logo.png";
 
-/* ── Smooth scroll helper ── */
-function scrollTo(href) {
-  const target = document.querySelector(href);
-  if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-}
+/* ── NAV (routes) ── */
+const NAV = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Suites", href: "/suites" },
+  { label: "Amenities", href: "/amenities" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Contact", href: "/contact" },
+];
 
-/* =========================
-   LABEL
-========================= */
-function Label({ children }) {
+/* ── SOCIAL ── */
+const SOCIALS = [
+  {
+    type: "instagram",
+    label: "Instagram",
+    href: "https://www.instagram.com/maheshventuresrpr/",
+  },
+  {
+    type: "facebook",
+    label: "Facebook",
+    href: "https://www.facebook.com/Maheshventures/",
+  },
+  { type: "x", label: "X (Twitter)", href: "https://x.com/maheshwari95189" },
+  { type: "whatsapp", label: "WhatsApp", href: "https://wa.me/918720001111" },
+];
+
+/* ── CONTACT ── */
+const CONTACT = {
+  emailPrimary: "Omayasuites11@gmail.com",
+  emailMahesh: "mventures011@gmail.com",
+
+  phone1: { label: "+91 77778 89762", href: "tel:+917777889762" },
+  phone2: { label: "+91 8720-001111", href: "tel:+918720001111" },
+  whatsapp: { label: "+91 8720-001111", href: "https://wa.me/918720001111" },
+
+  address: "Omaya Suites – Main Road, Kamal Vihar Entrance, Deopuri, Raipur",
+};
+
+/* ─────────────────────────────────────────────
+   Small UI
+───────────────────────────────────────────── */
+function Eyebrow({ children }) {
   return (
-    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#F1E3D2]/70">
+    <div className="text-[10px] font-extrabold uppercase text-[#C9A45C]/85 tracking-[0.22em]">
       {children}
-    </p>
+    </div>
   );
 }
 
-/* =========================
-   FOOTER LINK
-========================= */
 function FooterLink({ href, children }) {
-  const isAnchor = href?.startsWith("#");
-
-  const handleClick = (e) => {
-    if (isAnchor) {
-      e.preventDefault();
-      scrollTo(href);
-    }
-  };
-
   return (
-    <a
-      href={href}
-      onClick={handleClick}
-      className="
-        w-fit
-        text-sm
-        text-white/70
-        transition-all
-        duration-300
-        hover:translate-x-1
-        hover:text-white
-      "
+    <Link
+      to={href}
+      onClick={() => window.scrollTo(0, 0)}
+      className="w-fit text-sm text-white/70 transition hover:text-white"
     >
       {children}
-    </a>
+    </Link>
   );
 }
 
-/* =========================
-   SOCIAL BUTTON
-========================= */
 function SocialButton({ href, label, children }) {
   return (
     <a
@@ -64,34 +71,15 @@ function SocialButton({ href, label, children }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="
-        flex
-        h-9
-        w-9
-        items-center
-        justify-center
-        rounded-xl
-        border
-        border-white/10
-        bg-white/[0.04]
-        text-white/70
-        transition-all
-        duration-300
-        hover:-translate-y-0.5
-        hover:border-[#E07B39]/50
-        hover:bg-[#E07B39]/15
-        hover:text-[#FFD7BC]
-      "
+      title={label}
+      className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/70 transition hover:-translate-y-0.5 hover:border-[#C9A45C]/55 hover:bg-[#C9A45C]/10 hover:text-white"
     >
       {children}
     </a>
   );
 }
 
-/* =========================
-   SOCIAL ICONS
-   SVG — NO EXTRA PACKAGE
-========================= */
+/* ── Social SVG Icons ── */
 function SocialIcon({ type }) {
   if (type === "instagram") {
     return (
@@ -104,11 +92,16 @@ function SocialIcon({ type }) {
       >
         <rect x="3" y="3" width="18" height="18" rx="5" />
         <circle cx="12" cy="12" r="4" />
-        <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+        <circle
+          cx="17.5"
+          cy="6.5"
+          r="0.8"
+          fill="currentColor"
+          stroke="none"
+        />
       </svg>
     );
   }
-
   if (type === "facebook") {
     return (
       <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
@@ -116,232 +109,218 @@ function SocialIcon({ type }) {
       </svg>
     );
   }
-
-  if (type === "linkedin") {
+  if (type === "x") {
     return (
       <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
-        <path d="M6.5 8.5A2.5 2.5 0 1 0 6.5 3a2.5 2.5 0 0 0 0 5.5ZM4 10h5v10H4V10Zm8 0h4.8v1.4h.1c.7-1.2 2.2-2.4 4.6-2.4 4.9 0 5.5 3.2 5.5 7.4V20h-5v-3.1c0-1.5 0-3.5-2.1-3.5s-2.4 1.6-2.4 3.4V20h-5V10Z" />
+        <path d="M18.9 2H22l-6.8 7.8L23 22h-6.4l-5-6.6L5.8 22H2.7l7.3-8.4L1 2h6.6l4.5 6L18.9 2Zm-1.1 18h1.7L6.7 3.9H4.9L17.8 20Z" />
       </svg>
     );
   }
-
-  if (type === "youtube") {
+  if (type === "whatsapp") {
     return (
       <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
-        <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.5 15.5v-7l6 3.5-6 3.5Z" />
+        <path d="M20.5 3.5A11 11 0 0 0 2.3 17.6L1 23l5.6-1.5A11 11 0 0 0 23 12a11 11 0 0 0-2.5-8.5ZM12 21a9 9 0 0 1-4.6-1.2l-.3-.2-3.3.9.9-3.2-.2-.3A9 9 0 1 1 12 21Zm5.2-6.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.4.3-.6 0-.2 0-.4-.1-.6-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1-1.1 2.5 0 1.5 1.1 2.9 1.2 3.1.2.2 2.2 3.4 5.3 4.7.7.3 1.3.5 1.8.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4 0-.2-.2-.3-.5-.4Z" />
       </svg>
     );
   }
-
   return null;
 }
 
-/* =========================
-   CONTACT ROW
-========================= */
-function ContactRow({ icon: Icon, label, value, href }) {
-  const content = (
-    <div className="grid grid-cols-[30px_70px_minmax(0,1fr)] items-start gap-3">
-      {/* Icon */}
-      <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-[#E07B39]/20 bg-[#E07B39]/10">
-        <Icon size={14} strokeWidth={1.7} className="text-[#E07B39]" />
+function ContactLine({ Icon, children }) {
+  return (
+    <div className="flex items-start gap-3 py-2">
+      <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-white/10 bg-white/[0.04] text-[#C9A45C]">
+        <Icon size={16} strokeWidth={1.8} />
       </span>
-
-      {/* Label */}
-      <span className="pt-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-white/45">
-        {label}
-      </span>
-
-      {/* Value */}
-      <span className="min-w-0 break-words text-sm leading-6 text-white/75">
-        {value}
-      </span>
+      <div className="min-w-0 text-sm leading-6 text-white/70">{children}</div>
     </div>
   );
-
-  if (href) {
-    return (
-      <a
-        href={href}
-        className="block rounded-lg py-1.5 transition-all duration-300 hover:bg-white/[0.03]"
-      >
-        {content}
-      </a>
-    );
-  }
-
-  return <div className="py-1.5">{content}</div>;
 }
 
-/* =========================
-   FOOTER
-========================= */
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="relative overflow-hidden text-[#FFF7EE]" id="footer">
+    <footer className="relative overflow-hidden text-white" id="footer">
+      {/* Dark background */}
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[#111A24] via-[#0B0F14] to-[#070A0D]" />
+      <div className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[220px] w-[700px] -translate-x-1/2 rounded-full bg-[#C9A45C]/10 blur-[110px]" />
 
-      {/* Background */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[#1B120E] via-[#130C09] to-[#0B0908]" />
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      {/* Warm Glow */}
-      <div className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[320px] w-[700px] -translate-x-1/2 rounded-full bg-[#C65A1E]/10 blur-[100px]" />
-
-      {/* Main Container */}
-      <div className="mx-auto max-w-7xl px-6 py-10 sm:px-8 lg:px-10">
-
-        {/* ── Top CTA ── */}
-        <div className="flex flex-col gap-5 border-b border-white/10 pb-7 lg:flex-row lg:items-center lg:justify-between">
-
+      <div className="mx-auto max-w-7xl px-4 py-9 sm:px-6 lg:px-8">
+        {/* TOP CTA */}
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="min-w-0">
-            <Label>Need assistance?</Label>
-            <p className="mt-2 text-sm leading-6 text-white/65">
-              Enquire for availability —{" "}
-              <span className="text-[#FFD9C4]">rent or purchase</span>.
+            <Eyebrow>FOR BOOKINGS & ENQUIRIES</Eyebrow>
+            <p className="mt-2 text-sm text-white/70">
+              Call or WhatsApp for availability —{" "}
+              <span className="font-semibold text-[#C9A45C]">Rent or Purchase</span>.
             </p>
           </div>
 
-          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-
-            {/* Enquire */}
-            <a
-              href="#contact"
-              onClick={(e) => { e.preventDefault(); scrollTo("#contact"); }}
-              className="
-                group inline-flex items-center justify-center gap-2
-                rounded-xl bg-gradient-to-r from-[#C65A1E] to-[#E07B39]
-                px-6 py-3 text-[10px] font-semibold uppercase tracking-[0.18em]
-                text-white transition-all duration-300 hover:brightness-110
-              "
+          <div className="flex flex-wrap gap-3">
+            <Link
+              to="/contact"
+              onClick={() => window.scrollTo(0, 0)}
+              className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#B58D56] to-[#8F613B] px-5 py-3 text-[11px] font-extrabold uppercase text-white transition hover:brightness-110"
             >
               Enquire
               <ArrowRight
-                size={15}
-                className="transition-transform duration-300 group-hover:translate-x-1"
+                size={16}
+                className="transition-transform duration-300 group-hover:translate-x-0.5"
               />
-            </a>
+            </Link>
 
-            {/* Call */}
             <a
-              href="tel:+910000000000"
-              className="
-                inline-flex items-center justify-center gap-2
-                rounded-xl border border-white/12 bg-white/[0.035]
-                px-6 py-3 text-[10px] font-semibold uppercase tracking-[0.18em]
-                text-white/85 transition-all duration-300
-                hover:border-[#E07B39]/35 hover:bg-white/[0.06]
-              "
+              href={CONTACT.whatsapp.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/12 bg-white/[0.04] px-5 py-3 text-[11px] font-extrabold uppercase text-white/90 transition hover:border-[#C9A45C]/35 hover:bg-white/[0.06]"
             >
-              <Phone size={15} className="text-[#E07B39]" />
-              Call
+              <MessageCircle size={16} className="text-[#C9A45C]" />
+              WhatsApp
             </a>
-
           </div>
         </div>
 
-        {/* ── Main Grid ── */}
-        <div className="mt-9 grid gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+        <div className="mt-6 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-          {/* Brand */}
+        {/* MAIN GRID */}
+        <div className="mt-6 grid gap-10 md:grid-cols-2 lg:grid-cols-12">
+          {/* Brand (LOGO instead of text) */}
           <div className="lg:col-span-4">
-            <a
-              href="#"
-              onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-              className="inline-block text-2xl font-light tracking-[0.22em] text-white"
+            <Link
+              to="/"
+              onClick={() => window.scrollTo(0, 0)}
+              className="inline-flex items-center rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-[#C9A45C]/40"
+              aria-label="Omaya Home"
+              title="Omaya"
             >
-              OMAYA
-            </a>
+              <img
+                src={Logo}
+                alt="Omaya"
+                className="h-11 w-auto select-none object-contain sm:h-12"
+                loading="lazy"
+                draggable={false}
+              />
+            </Link>
 
-            <p className="mt-4 max-w-sm text-sm leading-6 text-white/65">
-              Calm, premium suite living — designed around comfort,
-              privacy and thoughtful hospitality.
+            <p className="mt-3 max-w-sm text-sm leading-6 text-white/65">
+              Calm, premium suite living — designed around comfort, privacy and
+              thoughtful hospitality.
             </p>
 
-            {/* Social */}
-            <div className="mt-6">
-              <Label>Follow Us</Label>
-              <div className="mt-3 flex items-center gap-2.5">
-                <SocialButton href="https://www.instagram.com/" label="Instagram">
-                  <SocialIcon type="instagram" />
-                </SocialButton>
-                <SocialButton href="https://www.facebook.com/" label="Facebook">
-                  <SocialIcon type="facebook" />
-                </SocialButton>
-                <SocialButton href="https://www.linkedin.com/" label="LinkedIn">
-                  <SocialIcon type="linkedin" />
-                </SocialButton>
-                <SocialButton href="https://www.youtube.com/" label="YouTube">
-                  <SocialIcon type="youtube" />
-                </SocialButton>
+            <div className="mt-5">
+              <Eyebrow>FOLLOW US</Eyebrow>
+              <div className="mt-3 flex flex-wrap items-center gap-2.5">
+                {SOCIALS.map((s) => (
+                  <SocialButton key={s.type} href={s.href} label={s.label}>
+                    <SocialIcon type={s.type} />
+                  </SocialButton>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Explore */}
-          <div className="md:col-span-1 lg:col-span-3">
-            <Label>Explore</Label>
-            <div className="mt-4 grid gap-3">
-              <FooterLink href="#about">About</FooterLink>
-              <FooterLink href="#suites">Suites</FooterLink>
-              <FooterLink href="#amenities">Amenities</FooterLink>
-              <FooterLink href="#rent-sale">Rent &amp; Purchase</FooterLink>
-              <FooterLink href="#contact">Contact</FooterLink>
+          {/* Explore (2-column compact) */}
+          <div className="lg:col-span-3">
+            <Eyebrow>EXPLORE</Eyebrow>
+            <div className="mt-4 grid grid-cols-2 gap-x-10 gap-y-2.5">
+              {NAV.map((n) => (
+                <FooterLink key={n.href} href={n.href}>
+                  {n.label}
+                </FooterLink>
+              ))}
             </div>
           </div>
 
-          {/* Contact Info */}
-          <div className="md:col-span-1 lg:col-span-5">
-            <Label>Contact</Label>
-            <div className="mt-4 space-y-2">
-              <ContactRow
-                icon={Mail}
-                label="Email"
-                value="hello@omayasuites.com"
-                href="mailto:hello@omayasuites.com"
-              />
-              <ContactRow
-                icon={Phone}
-                label="Phone"
-                value="+91 00000 00000"
-                href="tel:+910000000000"
-              />
-              <ContactRow
-                icon={MapPin}
-                label="Address"
-                value="Omaya Suites, Your Property Address, India"
-              />
+          {/* Contact */}
+          <div className="lg:col-span-5">
+            <Eyebrow>CONTACT</Eyebrow>
+
+            <div className="mt-4 divide-y divide-white/10">
+              <ContactLine Icon={Mail}>
+                <div className="space-y-1">
+                  <a
+                    href={`mailto:${CONTACT.emailMahesh}`}
+                    className="block font-semibold text-white hover:text-[#C9A45C]"
+                  >
+                    {CONTACT.emailMahesh}
+                  </a>
+                  <a
+                    href={`mailto:${CONTACT.emailPrimary}`}
+                    className="block text-white/70 hover:text-[#C9A45C]"
+                  >
+                    {CONTACT.emailPrimary}
+                  </a>
+                </div>
+              </ContactLine>
+
+              <ContactLine Icon={Phone}>
+                <div className="space-y-1">
+                  <a
+                    href={CONTACT.phone1.href}
+                    className="block font-semibold text-white hover:text-[#C9A45C]"
+                  >
+                    {CONTACT.phone1.label}
+                  </a>
+                  <a
+                    href={CONTACT.phone2.href}
+                    className="block text-white/70 hover:text-[#C9A45C]"
+                  >
+                    {CONTACT.phone2.label}
+                  </a>
+                </div>
+              </ContactLine>
+
+              <ContactLine Icon={MessageCircle}>
+                <a
+                  href={CONTACT.whatsapp.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-white hover:text-[#C9A45C]"
+                >
+                  {CONTACT.whatsapp.label}
+                </a>
+              </ContactLine>
+
+              <ContactLine Icon={MapPin}>
+                <span className="text-white/70">{CONTACT.address}</span>
+              </ContactLine>
             </div>
           </div>
-
         </div>
 
-        {/* ── Bottom Bar ── */}
-        <div className="mt-9 border-t border-white/10 pt-5">
-          <div className="flex flex-col gap-4 text-center text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between sm:text-left">
+        {/* Bottom */}
+        <div className="mt-7 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-            <p>© {new Date().getFullYear()} Omaya Suites. All rights reserved.</p>
+        <div className="mt-4 flex flex-col gap-3 text-center text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between sm:text-left">
+          <p>© {year} OMAYA SUITES. ALL RIGHTS RESERVED.</p>
 
-            <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-5">
-              <div className="flex items-center gap-5">
-                <a href="#" className="transition hover:text-white/80">Privacy</a>
-                <a href="#" className="transition hover:text-white/80">Terms</a>
-              </div>
-
-              <span className="hidden h-3 w-px bg-white/15 sm:block" />
-
-              <a
-                href="https://spadvertising.in/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition hover:text-[#FFD1B4]"
-              >
-                Designed by{" "}
-                <span className="font-medium text-[#E07B39]">SP Advertising</span>
+          <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-5">
+            <div className="flex items-center gap-5">
+              <a href="#" className="transition hover:text-white/80">
+                PRIVACY
+              </a>
+              <a href="#" className="transition hover:text-white/80">
+                TERMS
               </a>
             </div>
 
+            <span className="hidden h-3 w-px bg-white/15 sm:block" />
+
+            <a
+              href="https://spadvertising.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition hover:text-[#F2E2C7]"
+            >
+              DESIGNED BY{" "}
+              <span className="font-medium text-[#C9A45C]">SP ADVERTISING</span>
+            </a>
           </div>
         </div>
-
       </div>
     </footer>
   );
