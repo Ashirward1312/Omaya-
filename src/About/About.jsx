@@ -22,7 +22,7 @@ export default function About() {
         <div className="flex items-center gap-3">
           <span className="h-[2px] w-10 bg-[#B98A5A]" />
 
-          <span className="text-xs font-semibold tracking-[0.22em] text-[#B98A5A] uppercase">
+          <span className="text-xs font-semibold  text-[#B98A5A] uppercase">
             About Omaya Suites
           </span>
         </div>
@@ -80,7 +80,7 @@ export default function About() {
             <div className="mt-8">
               <a
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-none bg-zinc-950 px-6 py-3 text-xs font-semibold tracking-[0.22em] uppercase text-white shadow-sm transition hover:bg-zinc-900"
+                className="inline-flex items-center gap-2 rounded-none bg-zinc-950 px-6 py-3 text-xs font-semibold uppercase text-white shadow-sm transition hover:bg-zinc-900"
               >
                 Know More
                 <ArrowUpRight size={14} />
@@ -104,7 +104,7 @@ export default function About() {
 
             {/* Image Badge */}
             <div className="absolute bottom-4 left-4 right-4 rounded-xl bg-white/95 px-4 py-3 shadow-lg backdrop-blur">
-              <div className="text-[10px] font-semibold tracking-[0.15em] text-zinc-900 uppercase">
+              <div className="text-[10px] font-semibold  text-zinc-900 uppercase">
                 ✦ Premium Suites — Deluxe & Royal
               </div>
 

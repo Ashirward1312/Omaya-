@@ -46,7 +46,7 @@ const CONTACT = {
 ───────────────────────────────────────────── */
 function Eyebrow({ children }) {
   return (
-    <div className="text-[10px] font-extrabold uppercase text-[#C9A45C]/85 tracking-[0.22em]">
+    <div className="text-[10px] font-extrabold uppercase text-[#C9A45C]/85 ">
       {children}
     </div>
   );

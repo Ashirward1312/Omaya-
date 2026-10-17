@@ -114,7 +114,7 @@ export default function Header() {
               items-center gap-2
               rounded-xl
               border border-[#F4F1E9]/45 px-5 py-2.5
-              text-xs uppercase tracking-[0.2em] text-[#F4F1E9]
+              text-xs uppercase  text-[#F4F1E9]
               transition-all duration-300
               hover:bg-[#F4F1E9] hover:text-[#0B0F14] hover:border-[#F4F1E9]
             "
@@ -241,7 +241,7 @@ export default function Header() {
             className="
               flex w-full items-center justify-center gap-2
               rounded-xl bg-gradient-to-r from-[#B58D56] to-[#8F613B]
-              py-4 text-xs font-semibold uppercase tracking-[0.22em]
+              py-4 text-xs font-semibold uppercase 
               text-white transition-all duration-300 hover:brightness-110
             "
           >

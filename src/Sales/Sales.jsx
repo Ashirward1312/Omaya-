@@ -79,50 +79,70 @@ const OWNERSHIP_BENEFITS = [
 
 ];
 
+
+
 const SUITES = [
-  {
-    title: "EXECUTIVE SUITES",
-    units: "16 Units",
-    Icon: BriefcaseBusiness,
-    img: imgExecutive,
-    kicker: "BEST FOR BUSINESS STAYS",
-    desc:
-      "Executive Suites are designed for smart, comfortable stays with an efficient layout and premium furnishings. Ideal for corporate travel and long-stay occupancy, these suites support consistent demand and strong rental potential through managed hospitality operations.",
-    bullets: [
-      "Optimized for long-stay guests",
-      "Premium furniture & efficient layout",
-      "Business-friendly environment",
-    ],
-    imageSide: "right",
-  },
-  {
-    title: "DELUXE SUITES",
-    units: "3 Units",
-    Icon: BedDouble,
-    img: imgDeluxe,
-    kicker: "UPGRADED COMFORT",
-    desc:
-      "Deluxe Suites offer upgraded comfort with enhanced interiors and a richer in-room experience. Built for guests who prefer premium finishes, this category supports higher nightly value and an elevated brand perception.",
-    bullets: [
-      "Enhanced interiors & finishes",
-      "Ideal for premium short stays",
-      "Higher value positioning",
-    ],
-    imageSide: "left",
-  },
   {
     title: "ROYAL SUITES",
     units: "4 Units",
     Icon: Crown,
     img: imgRoyal,
     kicker: "TOP-TIER LUXURY",
+
     desc:
-      "Royal Suites are the signature premium category—crafted for guests who expect a high-end experience. This segment is positioned for maximum upsell, premium stays, and strong hospitality-led rental performance.",
+      "Royal Suites represent the finest in luxury and exclusivity. Featuring a private in-room swimming pool, a separate dining area, and a private balcony, each suite is designed to deliver an exceptional stay with elevated comfort and an indulgent atmosphere.",
+
     bullets: [
-      "Luxury feel for premium guests",
-      "High upsell potential",
-      "Designed for standout experiences",
+      "900 sq. ft. luxury suite",
+      "Luxury king-size bed for 2 guests",
+      "Private in-room swimming pool",
+      "Separate dining area",
+      "Private balcony",
+      "Exclusive premium guest experience",
     ],
+
+    imageSide: "right",
+  },
+
+  {
+    title: "DELUXE SUITES",
+    units: "3 Units",
+    Icon: BedDouble,
+    img: imgDeluxe,
+    kicker: "UPGRADED COMFORT",
+
+    desc:
+      "Deluxe Suites elevate the guest experience with refined interiors, enhanced finishes, and a private in-room jacuzzi. Designed for guests seeking extra comfort and indulgence, these suites combine relaxation, privacy, and premium hospitality.",
+
+    bullets: [
+      "800 sq. ft. spacious suite",
+      "Luxury king-size bed for 2 guests",
+      "Private in-room jacuzzi",
+      "Separate dining area",
+      "Enhanced interiors and premium finishes",
+    ],
+
+    imageSide: "left",
+  },
+
+  {
+    title: "EXECUTIVE SUITES",
+    units: "16 Units",
+    Icon: BriefcaseBusiness,
+    img: imgExecutive,
+    kicker: "BEST FOR BUSINESS STAYS",
+
+    desc:
+      "Executive Suites combine practical elegance with premium comfort. Featuring a spacious layout, a luxury king-size bed, and dedicated dining space, they are ideal for corporate travellers and extended stays, with attractive potential for managed hospitality operations.",
+
+    bullets: [
+      "750 sq. ft. spacious suite",
+      "Luxury king-size bed for 2 guests",
+      "Separate dining area",
+      "Private balcony",
+      "Efficient layout for business stays",
+    ],
+
     imageSide: "right",
   },
 ];
@@ -147,7 +167,7 @@ export default function Highlights() {
     <div className="relative text-center">
       <div className="flex items-center justify-center gap-3">
         <span className="h-px w-8 bg-[#C9A45C]/70" />
-        <span className="text-[9px] font-extrabold tracking-[0.18em] text-[#C9A45C] sm:text-[10px]">
+        <span className="text-[9px] font-extrabold  text-[#C9A45C] sm:text-[10px]">
           THE OWNERSHIP ADVANTAGE
         </span>
         <span className="h-px w-8 bg-[#C9A45C]/70" />
@@ -181,7 +201,7 @@ export default function Highlights() {
               />
             </div>
 
-            <span className="text-[10px] font-semibold tracking-[0.14em] text-white/25">
+            <span className="text-[10px] font-semibold  text-white/25">
               {String(index + 1).padStart(2, "0")}
             </span>
           </div>
@@ -199,7 +219,7 @@ export default function Highlights() {
           {/* CTA */}
           <a
             href="#contact"
-            className="mt-4 inline-flex w-fit items-center gap-2 rounded-lg border border-[#C9A45C]/40 bg-[#C9A45C]/12 px-4 py-2 text-[10px] font-extrabold tracking-[0.12em] text-[#C9A45C] transition hover:border-[#C9A45C]/70 hover:bg-[#C9A45C]/20 hover:text-white group"
+            className="mt-4 inline-flex w-fit items-center gap-2 rounded-lg border border-[#C9A45C]/40 bg-[#C9A45C]/12 px-4 py-2 text-[10px] font-extrabold  text-[#C9A45C] transition hover:border-[#C9A45C]/70 hover:bg-[#C9A45C]/20 hover:text-white group"
           >
             DISCUSS OWNERSHIP
             <ArrowUpRight
@@ -225,7 +245,7 @@ export default function Highlights() {
         {/* ── Visual separator between dark block & light heading ── */}
         <div className="my-12 flex items-center gap-5">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#A87952]/30 to-transparent" />
-          <span className="rounded-full border border-[#A87952]/25 bg-white px-4 py-1.5 text-[10px] font-extrabold tracking-[0.18em] text-[#A87952] uppercase">
+          <span className="rounded-full border border-[#A87952]/25 bg-white px-4 py-1.5 text-[10px] font-extrabold  text-[#A87952] uppercase">
             The Omaya Ownership Advantage
           </span>
           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#A87952]/30 to-transparent" />
@@ -257,7 +277,7 @@ export default function Highlights() {
 
             {/* LEFT: LOCATION STORY */}
             <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#C9A45C]/30 bg-white/5 px-4 py-2 text-[10px] font-extrabold tracking-[0.18em] text-[#C9A45C]">
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#C9A45C]/30 bg-white/5 px-4 py-2 text-[10px] font-extrabold  text-[#C9A45C]">
                 <MapPin size={14} strokeWidth={1.7} />
                 <span>LOCATION. ACCESS. OPPORTUNITY.</span>
               </div>
@@ -279,7 +299,7 @@ export default function Highlights() {
 
               {/* ADDRESS */}
               <div className="mt-5 rounded-2xl border border-white/10 bg-white/[0.04] p-4 sm:p-5">
-                <div className="flex items-center gap-2 text-[10px] font-extrabold tracking-[0.18em] text-[#C9A45C]">
+                <div className="flex items-center gap-2 text-[10px] font-extrabold  text-[#C9A45C]">
                   <MapPin size={14} />
                   PROPERTY LOCATION
                 </div>
@@ -291,7 +311,7 @@ export default function Highlights() {
 
               {/* LOCATION HIGHLIGHTS */}
               <div className="mt-6">
-                <div className="text-[10px] font-extrabold tracking-[0.18em] text-white/50">
+                <div className="text-[10px] font-extrabold  text-white/50">
                   CONNECTIVITY & SURROUNDING ADVANTAGES
                 </div>
 
@@ -316,7 +336,7 @@ export default function Highlights() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="#contact"
-                  className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#B58D56] to-[#8F613B] px-6 py-3.5 text-xs font-extrabold tracking-[0.12em] text-white shadow-lg shadow-black/20 transition duration-300 hover:-translate-y-0.5 hover:brightness-110"
+                  className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#B58D56] to-[#8F613B] px-6 py-3.5 text-xs font-extrabold text-white shadow-lg shadow-black/20 transition duration-300 hover:-translate-y-0.5 hover:brightness-110"
                 >
                   DISCUSS OWNERSHIP
                   <ArrowUpRight
@@ -338,7 +358,7 @@ export default function Highlights() {
                 <div className="absolute right-0 top-0 h-24 w-24 rounded-bl-full bg-[#C9A45C]/[0.07]" />
 
                 <div className="relative">
-                  <div className="text-xs font-extrabold tracking-[0.2em] text-[#C9A45C]">
+                  <div className="text-xs font-extrabold  text-[#C9A45C]">
                     PROPERTY AT A GLANCE
                   </div>
 
@@ -375,7 +395,7 @@ export default function Highlights() {
                           </span>
 
                           <div className="min-w-0">
-                            <div className="text-[10px] font-extrabold uppercase tracking-[0.15em] text-white/45">
+                            <div className="text-[10px] font-extrabold uppercase text-white/45">
                               {x.k}
                             </div>
 
@@ -409,7 +429,7 @@ export default function Highlights() {
         <div className="mt-10 rounded-3xl border border-[#A87952]/15 bg-white/70 p-7 shadow-sm backdrop-blur sm:p-9">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <div className="text-xs font-extrabold tracking-[0.18em] text-[#A87952]">
+              <div className="text-xs font-extrabold  text-[#A87952]">
                 SERVICES & OPERATIONS
               </div>
               <h3 className="mt-2 text-2xl font-semibold text-[#111A24]">
@@ -466,13 +486,13 @@ export default function Highlights() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
 
-                        <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#B58D56] to-[#8F613B] px-3 py-1 text-[10px] font-extrabold tracking-[0.14em] text-white shadow-md">
+                        <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#B58D56] to-[#8F613B] px-3 py-1 text-[10px] font-extrabold  text-white shadow-md">
                           <Icon size={14} strokeWidth={1.8} />
                           <span className="uppercase">{units}</span>
                         </div>
 
                         <div className="absolute bottom-4 left-4 right-4 rounded-xl bg-white/95 px-4 py-3 shadow-lg backdrop-blur">
-                          <div className="text-[10px] font-extrabold tracking-[0.16em] text-[#A87952] uppercase">
+                          <div className="text-[10px] font-extrabold  text-[#A87952] uppercase">
                             {kicker}
                           </div>
                           <div className="mt-1 text-sm font-semibold text-[#111A24]">
@@ -488,11 +508,11 @@ export default function Highlights() {
                         }`}
                     >
                       {/* Better “Heading feel” without changing the suite content */}
-                      <div className="inline-flex items-center gap-2 rounded-full border border-[#A87952]/20 bg-[#A87952]/10 px-4 py-2 text-[10px] font-extrabold tracking-[0.16em] text-[#A87952]">
+                      <div className="inline-flex items-center gap-2 rounded-full border border-[#A87952]/20 bg-[#A87952]/10 px-4 py-2 text-[10px] font-extrabold  text-[#A87952]">
                         SUITE CATEGORY
                       </div>
 
-                      <h3 className="mt-4 text-2xl font-extrabold uppercase tracking-[0.08em] text-transparent bg-clip-text bg-gradient-to-r from-[#B58D56] to-[#C9A45C] sm:text-3xl">
+                      <h3 className="mt-4 text-2xl font-extrabold uppercase  text-transparent bg-clip-text bg-gradient-to-r from-[#B58D56] to-[#C9A45C] sm:text-3xl">
                         {title}
                       </h3>
                       <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-[#B58D56] to-[#C9A45C]" />
