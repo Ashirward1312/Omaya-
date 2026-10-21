@@ -6,6 +6,7 @@ import Services from './Services/Services'
 import About from './About/About'
 import RentSale from './Sales/Sales'
 import Suites from './Gallery/Gallery'
+import GalleryEvents from './GalleryEvents/GalleryEvents'
 import Contact from './Contact/Contact'
 import Footer from './Footer/Footer'
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/amenities" element={<Services />} />
           <Route path="/suites" element={<Suites />} />
+          <Route path="/gallery-events" element={<GalleryEvents />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
