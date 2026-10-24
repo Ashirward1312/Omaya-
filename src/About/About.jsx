@@ -104,7 +104,7 @@ export default function About() {
                     Mahesh Ventures RERA
                   </div>
                   <div className="font-mono text-xs font-bold text-zinc-900">
-                    CGRERA260325A000B56
+                    CGRERA260325A000856
                   </div>
                 </div>
               </div>
