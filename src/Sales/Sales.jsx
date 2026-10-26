@@ -24,19 +24,50 @@ import {
   Building2,
   TrendingUp,
   Sparkles,
+  Plane,
+  Train,
+  Navigation,
+  ShoppingBag,
+  Car,
+  Building,
 } from "lucide-react";
 
 const ADDRESS =
   "Omaya Suites – Main Road, Kamal Vihar Entrance, Deopuri, Raipur";
 
-const LOCATION_POINTS = [
-  "Kamal Vihar",
-  "Deopuri",
-  "Main Road connectivity",
-  "Shubham K Mart",
-  "CBD/Commercial zones",
-  "Residential catchment",
-  "Easy access to major roads",
+const CONNECTIVITY_HUBS = [
+  {
+    title: "Atal Path Expressway",
+    time: "2 Mins",
+    detail: "Swift highway corridor access",
+    icon: Car,
+  },
+  {
+    title: "Swami Vivekananda Airport",
+    time: "15 Mins",
+    detail: "Seamless domestic air travel",
+    icon: Plane,
+  },
+  {
+    title: "Raipur Railway Station",
+    time: "15 Mins",
+    detail: "Central transit & junction hub",
+    icon: Train,
+  },
+  {
+    title: "Magneto The Mall",
+    time: "15 Mins",
+    detail: "Retail, dining & entertainment",
+    icon: ShoppingBag,
+  },
+];
+
+const SURROUNDING_ADVANTAGES = [
+  "Main Road Entrance – Kamal Vihar & Deopuri Junction",
+  "Direct Access to Key CBD & High-Growth Commercial Zones",
+  "Close Proximity to Shubham K-Mart & Daily Retail Conveniences",
+  "Established, High-Density Upscale Residential Catchment",
+  "Wide Arterial Roads with Seamless City-Wide Access",
 ];
 
 const SERVICES = [
@@ -478,26 +509,61 @@ export default function Highlights() {
               </div>
 
               {/* LOCATION HIGHLIGHTS */}
-              <div className="mt-6">
-                <div className="text-[10px] font-extrabold text-white/50">
-                  CONNECTIVITY & SURROUNDING ADVANTAGES
+              <div className="mt-7">
+                <div className="text-[10px] font-extrabold uppercase tracking-widest text-[#C9A45C]">
+                  KEY TRANSIT & CONNECTIVITY (TRAVEL TIME)
                 </div>
 
-                <ul className="mt-4 grid gap-x-7 gap-y-3 sm:grid-cols-2">
-                  {LOCATION_POINTS.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-3 text-sm text-white/80"
-                    >
-                      <CheckCircle2
-                        size={17}
-                        strokeWidth={1.8}
-                        className="mt-0.5 shrink-0 text-[#C9A45C]"
-                      />
-                      <span className="leading-6">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                {/* 4 Quick Transit Cards */}
+                <div className="mt-3.5 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  {CONNECTIVITY_HUBS.map((hub) => {
+                    const IconComponent = hub.icon;
+                    return (
+                      <div
+                        key={hub.title}
+                        className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-3.5 transition-all duration-300 hover:border-[#C9A45C]/40 hover:bg-white/[0.06]"
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#C9A45C]/15 text-[#C9A45C]">
+                            <IconComponent size={16} strokeWidth={2} />
+                          </div>
+                          <span className="rounded-full bg-[#C9A45C]/20 px-2 py-0.5 text-[11px] font-bold text-[#E8C882]">
+                            {hub.time}
+                          </span>
+                        </div>
+                        <div className="mt-2.5 text-xs font-bold leading-tight text-white group-hover:text-[#E8C882]">
+                          {hub.title}
+                        </div>
+                        <div className="mt-0.5 text-[10px] text-white/50 leading-tight">
+                          {hub.detail}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Surrounding Advantages Checklist */}
+                <div className="mt-5">
+                  <div className="text-[10px] font-extrabold uppercase tracking-widest text-white/50">
+                    STRATEGIC SURROUNDING ADVANTAGES
+                  </div>
+
+                  <ul className="mt-3 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
+                    {SURROUNDING_ADVANTAGES.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-2.5 text-xs text-white/80"
+                      >
+                        <CheckCircle2
+                          size={15}
+                          strokeWidth={2}
+                          className="mt-0.5 shrink-0 text-[#C9A45C]"
+                        />
+                        <span className="leading-5">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
 
               {/* CTA */}
