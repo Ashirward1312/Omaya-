@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import Logo from "../Images/Omaya_Logo.png";
+import Logo from "../Images/Omaya logo.png";
 
 /* ── Nav links ── */
 const NAV_LINKS = [

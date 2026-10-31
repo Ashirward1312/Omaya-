@@ -8,7 +8,7 @@ export default function Hero() {
         {/* Background Image */}
         <img
           src={heroImage}
-          alt="Omaya Suites luxury property"
+          alt="Omaya Square luxury property"
           fetchPriority="high"
           className="absolute inset-0 h-full w-full scale-[1.03] object-cover object-center"
         />
@@ -37,7 +37,7 @@ export default function Hero() {
                   className="relative whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.42em] text-[#E8D4AD] sm:text-xs"
                   style={{ textShadow: "0 2px 12px rgba(0,0,0,0.45)" }}
                 >
-                  OMAYA SUITES
+                  Omaya Square
                 </p>
               </div>
 

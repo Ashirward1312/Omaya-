@@ -239,7 +239,7 @@ export default function Gallery() {
           </div>
 
           <h2 className="mt-5 text-3xl font-semibold leading-tight text-[#F4F1E9] sm:text-4xl">
-            Explore <span className="text-[#C9A45C]">Omaya Suites</span>
+            Explore <span className="text-[#C9A45C]">Omaya Square</span>
           </h2>
 
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-white/70 sm:text-base">

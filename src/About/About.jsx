@@ -23,7 +23,7 @@ export default function About() {
           <div className="flex items-center gap-3">
             <span className="h-[2px] w-10 bg-[#B98A5A]" />
             <span className="text-xs font-semibold text-[#B98A5A] uppercase">
-              About Omaya Suites
+              About Omaya Square
             </span>
           </div>
 
@@ -49,7 +49,7 @@ export default function About() {
             </h2>
 
             <p className="mt-5 text-sm leading-7 text-zinc-700 sm:text-base">
-              Omaya Suites is a premium suite property strategically
+              Omaya Square is a premium suite property strategically
               located at the entrance of{" "}
               <span className="font-semibold text-zinc-900">
                 Kamal Vihar, Deopuri, Raipur
@@ -127,7 +127,7 @@ export default function About() {
             <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-[0_22px_60px_-35px_rgba(0,0,0,0.55)]">
               <img
                 src={img1}
-                alt="Omaya Suites Luxury Interior"
+                alt="Omaya Square Luxury Interior"
                 className="h-[360px] w-full object-cover sm:h-[420px] lg:h-[500px]"
                 loading="lazy"
               />

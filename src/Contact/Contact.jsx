@@ -206,7 +206,7 @@ export default function Contact() {
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(700px_320px_at_20%_0%,rgba(201,164,92,0.18),transparent_60%)]" />
 
             <div className="relative">
-              <Pill>Contact Omaya Suites</Pill>
+              <Pill>Contact Omaya Square</Pill>
 
               <h3 className="mt-4 text-2xl font-semibold tracking-tight text-[#F4F1E9] sm:text-3xl">
                 We’re here to help.

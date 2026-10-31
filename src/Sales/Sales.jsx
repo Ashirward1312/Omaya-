@@ -1,4 +1,4 @@
-// src/components/Highlights.jsx (Omaya Suites - Tailwind, Premium Theme)
+// src/components/Highlights.jsx (Omaya Square - Tailwind, Premium Theme)
 import { useState, useEffect } from "react";
 
 import imgExecutive from "../Images/executive.jpg";
@@ -33,7 +33,7 @@ import {
 } from "lucide-react";
 
 const ADDRESS =
-  "Omaya Suites – Main Road, Kamal Vihar Entrance, Deopuri, Raipur";
+  "Omaya Square – Main Road, Kamal Vihar Entrance, Deopuri, Raipur";
 
 const CONNECTIVITY_HUBS = [
   {
@@ -83,7 +83,7 @@ const SERVICES = [
 ];
 
 /* ========================================================
-   ✅ WHY OWN OMAYA SUITES (Short & Simple Titles, 10s Auto-Slide)
+   ✅ WHY OWN Omaya Square (Short & Simple Titles, 10s Auto-Slide)
 ======================================================== */
 const WHY_OWN_SLIDES = [
   {
@@ -300,7 +300,7 @@ export default function Highlights() {
     <section id="highlights" className="bg-[#F4F1E9] py-14 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* ========================================================
-            ✅ REDESIGNED: WHY OWN OMAYA SUITES (Ultra-Premium, 10s Auto-Slide, Full Uncropped Images)
+            ✅ REDESIGNED: WHY OWN Omaya Square (Ultra-Premium, 10s Auto-Slide, Full Uncropped Images)
            ======================================================== */}
         <div
           className="relative mb-12 overflow-hidden rounded-3xl border border-[#B58D56]/20 bg-white/90 p-5 shadow-[0_20px_50px_-20px_rgba(181,141,86,0.18)] backdrop-blur-md sm:p-8 lg:p-10"
@@ -321,7 +321,7 @@ export default function Highlights() {
             <h2 className="mt-3 text-2xl font-serif font-bold tracking-tight text-[#111A24] sm:text-3xl">
               Why Own at{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B58D56] via-[#C9A45C] to-[#8F613B]">
-                Omaya Suites?
+                Omaya Square?
               </span>
             </h2>
 
@@ -463,7 +463,7 @@ export default function Highlights() {
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-zinc-600 sm:text-base">
-            Discover the advantages of owning a premium serviced suite at Omaya Suites,
+            Discover the advantages of owning a premium serviced suite at Omaya Square,
             where strategic connectivity, hospitality-led operations and personal
             flexibility come together in one distinctive property.
           </p>
@@ -489,7 +489,7 @@ export default function Highlights() {
               </h3>
 
               <p className="mt-4 max-w-2xl text-sm leading-7 text-white/70 sm:text-base">
-                Located on the main road at the entrance of Kamal Vihar, Omaya Suites
+                Located on the main road at the entrance of Kamal Vihar, Omaya Square
                 offers convenient connectivity and a clearly identifiable destination.
                 For prospective owners, location is an important factor to evaluate
                 when considering long-term property value, guest accessibility and
@@ -655,7 +655,7 @@ export default function Highlights() {
                 Hospitality-led services designed to protect guest experience
               </h3>
               <p className="mt-2 max-w-2xl text-sm leading-7 text-zinc-700 sm:text-base">
-                Omaya Suites is structured for smooth day-to-day operations—supporting
+                Omaya Square is structured for smooth day-to-day operations—supporting
                 guest satisfaction and professional rental management.
               </p>
             </div>

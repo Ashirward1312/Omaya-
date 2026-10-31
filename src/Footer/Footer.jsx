@@ -1,7 +1,7 @@
 // src/components/Footer.jsx (OMAYA — Dark + Gold | Simple + Compact | Logo + Explore 2-Column)
 import { ArrowRight, Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-import Logo from "../Images/Omaya_Logo.png";
+import Logo from "../Images//Omaya logo.png";
 
 /* ── NAV (routes) ── */
 const NAV = [
@@ -38,7 +38,7 @@ const CONTACT = {
   phone2: { label: "+91 8720-001111", href: "tel:+918720001111" },
   whatsapp: { label: "+91 8720-001111", href: "https://wa.me/918720001111" },
 
-  address: "Omaya Suites – Main Road, Kamal Vihar Entrance, Deopuri, Raipur",
+  address: "Omaya Square – Main Road, Kamal Vihar Entrance, Deopuri, Raipur",
 };
 
 /* ─────────────────────────────────────────────
@@ -296,7 +296,7 @@ export default function Footer() {
         <div className="mt-7 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
         <div className="mt-4 flex flex-col gap-3 text-center text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between sm:text-left">
-          <p>© {year} OMAYA SUITES. ALL RIGHTS RESERVED.</p>
+          <p>© {year} OMAYA SQUARE. ALL RIGHTS RESERVED.</p>
 
           <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-5">
             <div className="flex items-center gap-5">
